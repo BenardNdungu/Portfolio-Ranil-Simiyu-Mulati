@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranil Simiyu Mulati | Finance & Investment Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0D1117;
+    --paper: #F7F4EF;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --forest: #1A3A2A;
+    --forest-mid: #2D5C42;
+    --sage: #7DA88A;
+    --mist: #E8EDE9;
+    --warm-grey: #9A9590;
+    --accent-red: #A0402A;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /*  NAV  */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 5%;
+    background: rgba(247,244,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: all 0.3s ease;
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--forest);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink); text-decoration: none;
+    position: relative; transition: color 0.2s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+    height: 1px; background: var(--gold); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--forest); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--ink); transition: all 0.3s; }
+
+  /*  HERO  */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    background: var(--forest);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 10rem 6% 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 70%, rgba(201,168,76,0.12) 0%, transparent 70%);
+  }
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.8rem;
+    display: flex; align-items: center; gap: 1rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag::before { content: ''; width: 2rem; height: 1px; background: var(--gold); }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--paper);
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-name em { font-style: italic; color: var(--gold-light); }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-weight: 300; font-style: italic;
+    color: var(--sage); margin: 1.5rem 0 2.5rem;
+    line-height: 1.6;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-intro {
+    font-size: 0.9rem; line-height: 1.8;
+    color: rgba(232,237,233,0.75); max-width: 420px;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 3rem;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+  .btn-primary {
+    padding: 0.85rem 2rem; background: var(--gold);
+    color: var(--forest); font-weight: 600; font-size: 0.8rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+  .btn-outline {
+    padding: 0.85rem 2rem; background: transparent;
+    border: 1px solid rgba(232,237,233,0.3); color: var(--paper);
+    font-weight: 500; font-size: 0.8rem; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.25s ease;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-right {
+    background: var(--paper);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 10rem 6% 6rem;
+    position: relative;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px; height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,58,42,0.06) 0%, transparent 70%);
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    width: 100%; max-width: 360px;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .stat-card {
+    background: var(--ink); padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  .stat-card:nth-child(2) { background: var(--forest-mid); }
+  .stat-card:nth-child(3) { background: var(--forest); }
+  .stat-card:nth-child(4) { background: var(--gold); }
+  .stat-card:nth-child(4) .stat-num, .stat-card:nth-child(4) .stat-label { color: var(--forest); }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem; font-weight: 600; color: var(--paper);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(247,244,239,0.6); margin-top: 0.5rem;
+    font-family: 'Space Mono', monospace;
+  }
+  .hero-badge {
+    margin-top: 2rem; padding: 1rem 2rem;
+    border: 1px solid rgba(201,168,76,0.4);
+    font-family: 'Space Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-grey);
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+  .hero-badge strong { color: var(--gold); }
+
+  /*  SECTION COMMONS  */
+  section { padding: 6rem 5%; }
+  .section-header { margin-bottom: 4rem; }
+  .section-tag {
+    font-family: 'Space Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;
+  }
+  .section-tag::before { content: ''; width: 2rem; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300; line-height: 1.15; color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--forest-mid); }
+
+  /*  ABOUT  */
+  #about { background: var(--ink); color: var(--paper); }
+  #about .section-title { color: var(--paper); }
+  #about .section-title em { color: var(--gold-light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; }
+  .about-left {}
+  .about-story {
+    font-size: 1.05rem; line-height: 1.9; color: rgba(247,244,239,0.8);
+    margin-bottom: 1.8rem;
+  }
+  .about-story strong { color: var(--gold-light); font-weight: 500; }
+  .about-goal {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem; margin-top: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-style: italic; color: rgba(247,244,239,0.9);
+    line-height: 1.6;
+  }
+  .about-right {}
+  .cifa-card {
+    background: var(--forest);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 2.5rem; margin-bottom: 2rem;
+    position: relative; overflow: hidden;
+  }
+  .cifa-card::before {
+    content: 'CIFA';
+    position: absolute; right: -0.5rem; top: -1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 600; color: rgba(201,168,76,0.06);
+    pointer-events: none;
+  }
+  .cifa-tag {
+    font-family: 'Space Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .cifa-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; color: var(--paper); margin-bottom: 0.5rem;
+  }
+  .cifa-sub { font-size: 0.85rem; color: rgba(247,244,239,0.55); }
+  .langs { display: flex; flex-direction: column; gap: 1rem; }
+  .lang-row { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid rgba(247,244,239,0.08); }
+  .lang-name { font-size: 0.9rem; color: rgba(247,244,239,0.7); }
+  .lang-level { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--sage); }
+
+  /*SKILLS */
+  #skills { background: var(--mist); }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .skills-col-title {
+    font-family: 'Space Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--forest); margin-bottom: 2rem;
+    padding-bottom: 1rem; border-bottom: 1px solid rgba(26,58,42,0.15);
+  }
+  .skill-item { margin-bottom: 1.8rem; }
+  .skill-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; }
+  .skill-name { font-weight: 500; font-size: 0.9rem; color: var(--ink); }
+  .skill-pct {
+    font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--warm-grey);
+  }
+  .skill-bar { height: 3px; background: rgba(26,58,42,0.1); position: relative; overflow: hidden; }
+  .skill-fill {
+    height: 100%; background: linear-gradient(90deg, var(--forest-mid), var(--gold));
+    border-radius: 2px; transform: scaleX(0); transform-origin: left;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .skill-fill.animate { transform: scaleX(1); }
+  .skill-desc { font-size: 0.8rem; color: var(--warm-grey); margin-top: 0.35rem; line-height: 1.5; }
+  .soft-skills { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+  .soft-tag {
+    padding: 0.5rem 1.1rem; border: 1px solid rgba(26,58,42,0.2);
+    font-size: 0.8rem; color: var(--forest); transition: all 0.2s;
+  }
+  .soft-tag:hover { background: var(--forest); color: var(--paper); border-color: var(--forest); }
+
+  /*  EXPERIENCE  */
+  #experience { background: var(--paper); }
+  .exp-timeline { position: relative; }
+  .exp-timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: linear-gradient(to bottom, var(--gold), var(--forest-mid));
+  }
+  .exp-item { padding-left: 3rem; position: relative; margin-bottom: 4rem; }
+  .exp-item::before {
+    content: ''; position: absolute; left: -5px; top: 0.4rem;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+  .exp-period {
+    font-family: 'Space Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.12em; color: var(--warm-grey); margin-bottom: 0.4rem;
+  }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem;
+  }
+  .exp-org {
+    font-size: 0.85rem; color: var(--forest-mid); font-weight: 500; margin-bottom: 1.5rem;
+  }
+  .exp-achievements { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+  .exp-achievements li {
+    display: flex; gap: 0.8rem; align-items: flex-start;
+    font-size: 0.9rem; line-height: 1.6; color: #3A3530;
+  }
+  .exp-achievements li::before {
+    content: '→'; color: var(--gold); flex-shrink: 0; margin-top: 0.1rem;
+    font-family: 'Space Mono', monospace;
+  }
+  .exp-achievements li strong { color: var(--forest); }
+
+  /*  PROJECTS  */
+  #projects { background: var(--forest); color: var(--paper); }
+  #projects .section-title { color: var(--paper); }
+  #projects .section-title em { color: var(--gold-light); }
+  #projects .section-tag { color: var(--gold); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; }
+  .project-card {
+    background: rgba(247,244,239,0.04); padding: 2.5rem;
+    border: 1px solid rgba(201,168,76,0.1);
+    transition: all 0.3s ease; position: relative; overflow: hidden;
+    cursor: pointer;
+  }
+  .project-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .project-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300;
+    color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 1rem;
+  }
+  .project-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600;
+    color: var(--paper); margin-bottom: 0.8rem; line-height: 1.3;
+  }
+  .project-desc { font-size: 0.85rem; line-height: 1.7; color: rgba(247,244,239,0.65); margin-bottom: 1.5rem; }
+  .project-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .tool-badge {
+    padding: 0.3rem 0.8rem; background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    font-family: 'Space Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.08em; color: var(--gold-light);
+  }
+  .project-outcome {
+    padding-top: 1.2rem; border-top: 1px solid rgba(247,244,239,0.08);
+    font-size: 0.8rem; color: var(--sage); line-height: 1.5;
+  }
+  .project-outcome strong { display: block; font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+
+  /*  EDUCATION  */
+  #education { background: var(--paper); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .edu-card {
+    border-top: 2px solid var(--gold); padding-top: 2rem;
+  }
+  .edu-period {
+    font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--warm-grey); margin-bottom: 0.5rem;
+  }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.3rem;
+  }
+  .edu-institution { font-size: 0.9rem; color: var(--forest-mid); font-weight: 500; margin-bottom: 1.2rem; }
+  .edu-courses {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .course-tag {
+    padding: 0.35rem 0.9rem; background: var(--mist);
+    font-size: 0.78rem; color: var(--forest);
+    border: 1px solid rgba(26,58,42,0.1);
+  }
+  .cert-card {
+    background: var(--ink); padding: 2.5rem;
+    border-left: 3px solid var(--gold);
+  }
+  .cert-status {
+    display: inline-block; padding: 0.3rem 0.8rem;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    font-family: 'Space Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem;
+  }
+  .cert-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    color: var(--paper); margin-bottom: 0.4rem;
+  }
+  .cert-body { font-size: 0.85rem; color: rgba(247,244,239,0.55); }
+
+  /*  CONTACT  */
+  #contact { background: var(--ink); color: var(--paper); }
+  #contact .section-title { color: var(--paper); }
+  #contact .section-title em { color: var(--gold-light); }
+  .contact-grid { display: flex; flex-direction: column; align-items: center; text-align: left; max-width: 680px; margin: 0 auto; }
+  .contact-message {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    font-weight: 300; line-height: 1.7; color: rgba(247,244,239,0.8);
+    margin-bottom: 2.5rem;
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1.2rem; }
+  .contact-icon {
+    width: 40px; height: 40px; background: var(--forest);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-size: 1rem;
+  }
+  .contact-item-content {}
+  .contact-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 0.2rem; }
+  .contact-value { font-size: 0.9rem; color: var(--paper); }
+  .contact-value a { color: var(--gold-light); text-decoration: none; }
+  .contact-value a:hover { text-decoration: underline; }
+
+  .social-links { display: flex; gap: 1rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap; }
+  .social-btn {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.8rem 1.6rem; border: 1px solid rgba(201,168,76,0.35);
+    color: var(--paper); text-decoration: none; font-size: 0.82rem;
+    font-family: 'Space Mono', monospace; letter-spacing: 0.08em;
+    transition: all 0.25s ease;
+  }
+  .social-btn:hover { background: var(--gold); color: var(--forest); border-color: var(--gold); }
+
+  /*  FOOTER  */
+  footer {
+    background: var(--ink); border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--warm-grey);
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /*  ANIMATIONS  */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /*  MOBILE  */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 5%; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--paper); padding: 1.5rem 5%; border-bottom: 1px solid rgba(201,168,76,0.2); gap: 1.2rem; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 8rem 6% 5rem; }
+    .about-grid, .skills-grid, .edu-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 4rem 5%; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* scroll indicator */
+  .scroll-indicator {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    color: rgba(247,244,239,0.4);
+    font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em;
+    animation: bounce 2s infinite;
+  }
+  .scroll-indicator::after {
+    content: ''; font-size: 1rem; color: var(--gold);
+  }
+  @keyframes bounce { 0%,100%{ transform: translateX(-50%) translateY(0); } 50%{ transform: translateX(-50%) translateY(-6px); } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">RSM // Finance</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Finance &amp; Investment Analyst </div>
+    <h1 class="hero-name">Ranil<br><em>Simiyu</em><br>Mulati</h1>
+    <p class="hero-headline">Turning financial data into<br>decisions that drive growth.</p>
+    <p class="hero-intro">
+      A results-driven finance graduate with hands-on experience in credit analysis, financial reporting, and budgeting — currently deepening expertise through the CIFA qualification at KASNEB.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-outline">View Projects</a>
+      <a href="Ranil Cv.docx" class="btn-outline">Download CV</a>
+    </div>
+    <div class="scroll-indicator">SCROLL</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Finance Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">BCom</div>
+        <div class="stat-label">Finance — KCA University</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">CIFA</div>
+        <div class="stat-label">KASNEB — In Progress</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <div class="section-tag">My Story</div>
+    <h2 class="section-title">A Finance Professional<br><em>Built for Impact</em></h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <p class="about-story">
+        My journey into finance began with a simple conviction: <strong>numbers are not just data — they are the language of business decisions.</strong> Growing up in Kenya, I watched how access to smart financial tools — or the lack thereof — could determine whether businesses thrived or stalled.
+      </p>
+      <p class="about-story">
+        That conviction drove me to KCA University, where I earned my Bachelor of Commerce in Finance, graduating in November 2024. During my studies, I didn't wait for opportunity — I <strong>created it</strong>, securing internship roles at Ardhi SACCO and Goldenmax Solar Energy Limited, where I gained real-world exposure to credit analysis, financial modelling, and reporting.
+      </p>
+      <p class="about-story">
+        Today, I am actively pursuing the <strong>Certified Investment and Financial Analyst (CIFA)</strong> qualification through KASNEB — sharpening my technical edge to deliver sophisticated investment analysis and financial strategies for the organizations I serve.
+      </p>
+      <blockquote class="about-goal">
+        "My goal is to contribute to a dynamic finance team in East Africa and beyond — where I can apply analytical rigor to real-world problems and grow into a trusted investment or financial advisory role."
+      </blockquote>
+    </div>
+    <div class="about-right reveal">
+      <div class="cifa-card">
+        <div class="cifa-tag">Currently Pursuing</div>
+        <div class="cifa-title">Certified Investment &amp; Financial Analyst (CIFA)</div>
+        <div class="cifa-sub">KASNEB · Kenya · In Progress</div>
+      </div>
+      <div class="langs">
+        <div class="langs" style="margin-top:0;">
+          <div style="font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(247,244,239,0.35); margin-bottom:1rem;">Languages</div>
+          <div class="lang-row">
+            <span class="lang-name">English</span>
+            <span class="lang-level">Fluent</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Kiswahili</span>
+            <span class="lang-level">Fluent</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Luhya</span>
+            <span class="lang-level">Conversational</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <div class="section-tag">Capabilities</div>
+    <h2 class="section-title">Skills &amp; <em>Expertise</em></h2>
+  </div>
+  <div class="skills-grid">
+    <div class="reveal">
+      <div class="skills-col-title">Technical &amp; Financial Skills</div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Financial Analysis &amp; Reporting</span><span class="skill-pct">90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="0.9"></div></div>
+        <div class="skill-desc">Preparation and interpretation of income statements, balance sheets, and cash flow statements for management decision-making.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Microsoft Excel &amp; Financial Modelling</span><span class="skill-pct">85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="0.85"></div></div>
+        <div class="skill-desc">Advanced Excel for forecasting models, sensitivity analysis, pivot tables, and dashboard creation.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Budgeting &amp; Forecasting</span><span class="skill-pct">82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="0.82"></div></div>
+        <div class="skill-desc">Variance analysis, cost tracking, and forward-looking financial projections for operational planning.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Credit &amp; Loan Appraisal</span><span class="skill-pct">80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="0.80"></div></div>
+        <div class="skill-desc">Assessment of member creditworthiness, collateral evaluation, and repayment capacity analysis (SACCO context).</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Computerized Accounting Systems</span><span class="skill-pct">78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="0.78"></div></div>
+        <div class="skill-desc">Journal entries, ledger reconciliation, and accounts payable/receivable management in digital accounting environments.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Investment &amp; Risk Appraisal</span><span class="skill-pct">75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="0.75"></div></div>
+        <div class="skill-desc">Market research, sector analysis, and risk-return evaluation for investment opportunities (renewable energy sector).</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skills-col-title">Professional &amp; Soft Skills</div>
+      <div class="soft-skills">
+        <span class="soft-tag">Communication</span>
+        <span class="soft-tag">Team Leadership</span>
+        <span class="soft-tag">Team Management</span>
+        <span class="soft-tag">Organization</span>
+        <span class="soft-tag">Time Management</span>
+        <span class="soft-tag">Project Management</span>
+        <span class="soft-tag">Analytical Thinking</span>
+        <span class="soft-tag">Attention to Detail</span>
+        <span class="soft-tag">Report Writing</span>
+        <span class="soft-tag">Stakeholder Engagement</span>
+        <span class="soft-tag">Problem Solving</span>
+        <span class="soft-tag">Data Analysis</span>
+      </div>
+      <div style="margin-top: 3rem;">
+        <div class="skills-col-title">Core Competencies</div>
+        <div style="display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem;">
+          <div style="display:flex; align-items:center; gap:1rem; padding:1.2rem; background:white; border-left:3px solid var(--gold);">
+            <span style="font-size:1.4rem;">📊</span>
+            <div>
+              <div style="font-weight:600; font-size:0.85rem;">Financial Analysis &amp; Reporting</div>
+              <div style="font-size:0.78rem; color:var(--warm-grey); margin-top:0.2rem;">Monthly reporting, variance analysis, management decks</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:1rem; padding:1.2rem; background:white; border-left:3px solid var(--forest-mid);">
+            <span style="font-size:1.4rem;">🏦</span>
+            <div>
+              <div style="font-weight:600; font-size:0.85rem;">Investment Appraisal</div>
+              <div style="font-size:0.78rem; color:var(--warm-grey); margin-top:0.2rem;">DCF modelling, IRR/NPV analysis, sector research</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:1rem; padding:1.2rem; background:white; border-left:3px solid var(--accent-red);">
+            <span style="font-size:1.4rem;">⚖️</span>
+            <div>
+              <div style="font-weight:600; font-size:0.85rem;">Risk Assessment</div>
+              <div style="font-size:0.78rem; color:var(--warm-grey); margin-top:0.2rem;">Credit risk, market risk, operational risk frameworks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <div class="section-tag">Work History</div>
+    <h2 class="section-title">Professional <em>Experience</em></h2>
+  </div>
+  <div class="exp-timeline">
+    <div class="exp-item reveal">
+      <div class="exp-period">October 2025 — February 2026</div>
+      <div class="exp-role">Finance Intern</div>
+      <div class="exp-org">Ardhi SACCO Society Ltd · Nairobi, Kenya</div>
+      <ul class="exp-achievements">
+        <li>Conducted <strong>loan appraisal and credit analysis</strong> for member applications, assessing repayment capacity and reducing default risk through rigorous financial profiling.</li>
+        <li>Evaluated <strong>member financial statements and guarantor documentation</strong>, ensuring full compliance with SACCO lending policies and credit standards.</li>
+        <li>Maintained <strong>accurate and up-to-date loan records</strong> within the SACCO's management system, improving data integrity and audit readiness.</li>
+        <li>Followed up on overdue loan repayments and <strong>supported recovery strategies</strong>, contributing to the improvement of the portfolio-at-risk (PAR) ratio.</li>
+        <li>Collaborated with senior finance staff to <strong>streamline loan processing workflows</strong>, reducing average appraisal turnaround time.</li>
+      </ul>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-period">May 2024 — February 2025</div>
+      <div class="exp-role">Finance Assistant (Attachment)</div>
+      <div class="exp-org">Goldenmax Solar Energy Limited · Nairobi, Kenya</div>
+      <ul class="exp-achievements">
+        <li>Assisted in the preparation and analysis of <strong>monthly financial statements</strong>, enabling timely reporting and data-driven management decisions.</li>
+        <li>Supported <strong>budgeting and forecasting processes</strong> that improved cost tracking accuracy and identified key areas for operational savings.</li>
+        <li>Prepared <strong>journal entries and reconciled ledger accounts</strong>, maintaining a zero-error rate in month-end close procedures.</li>
+        <li>Processed <strong>supplier payments and verified invoices</strong> for accuracy and compliance, reducing payment discrepancies.</li>
+        <li>Developed <strong>basic financial models</strong> used to support management decision-making on capital allocation and expenditure planning.</li>
+        <li>Conducted <strong>market research on renewable energy investment opportunities</strong> in Kenya, producing a sector brief presented to senior leadership.</li>
+        <li>Prepared <strong>financial reports and presentation decks</strong> for senior management review, enhancing the quality of board-level financial communication.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <div class="section-tag">Portfolio Work</div>
+    <h2 class="section-title">Finance <em>Projects</em></h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-num">01</div>
+      <div class="project-title">SACCO Loan Appraisal &amp; Credit Risk Model</div>
+      <div class="project-desc">A structured credit analysis framework developed to assess loan eligibility for SACCO members. The model incorporates income verification, guarantor assessment, and historical repayment scoring to produce a composite creditworthiness index.</div>
+      <div class="project-tools">
+        <span class="tool-badge">Microsoft Excel</span>
+        <span class="tool-badge">Financial Ratios</span>
+        <span class="tool-badge">Credit Scoring</span>
+        <span class="tool-badge">Data Validation</span>
+      </div>
+      <div class="project-outcome">
+        <strong>Outcome / Impact</strong>
+        Enabled faster loan decisions with a standardized appraisal template, reducing subjective bias and improving portfolio quality at Ardhi SACCO.
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">02</div>
+      <div class="project-title">Financial Statement Analysis Dashboard</div>
+      <div class="project-desc">A comprehensive Excel-based dashboard analyzing 3 years of financial statements for a Kenyan SME. Includes liquidity, profitability, efficiency, and leverage ratios with trend charts and automated commentary flags for key anomalies.</div>
+      <div class="project-tools">
+        <span class="tool-badge">Excel Dashboards</span>
+        <span class="tool-badge">Ratio Analysis</span>
+        <span class="tool-badge">Trend Charts</span>
+        <span class="tool-badge">Conditional Formatting</span>
+      </div>
+      <div class="project-outcome">
+        <strong>Outcome / Impact</strong>
+        Produced a single-page executive summary that condensed 3 years of financial data into actionable insights for senior management.
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">03</div>
+      <div class="project-title">Renewable Energy Investment Case Study</div>
+      <div class="project-desc">An investment appraisal study of solar energy projects in East Africa. Covers market sizing, regulatory environment, capital cost estimation, NPV/IRR analysis, and risk-adjusted return projections. Inspired by direct industry exposure at Goldenmax Solar Energy.</div>
+      <div class="project-tools">
+        <span class="tool-badge">DCF Modelling</span>
+        <span class="tool-badge">NPV / IRR</span>
+        <span class="tool-badge">Market Research</span>
+        <span class="tool-badge">Risk Analysis</span>
+      </div>
+      <div class="project-outcome">
+        <strong>Outcome / Impact</strong>
+        Identified two high-return project structures with IRR &gt; 18%, presented as a strategic brief for leadership consideration.
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">04</div>
+      <div class="project-title">Personal Finance Literacy Tracker (Excel Tool)</div>
+      <div class="project-desc">A user-friendly Excel workbook designed to help young Kenyan professionals track income, expenses, savings goals, and investment progress. Includes automated summaries, savings rate calculator, and a debt-repayment planner — aligned with real East African salary structures.</div>
+      <div class="project-tools">
+        <span class="tool-badge">Excel</span>
+        <span class="tool-badge">Data Validation</span>
+        <span class="tool-badge">Financial Planning</span>
+        <span class="tool-badge">User Design</span>
+      </div>
+      <div class="project-outcome">
+        <strong>Outcome / Impact</strong>
+        A practical tool demonstrating ability to translate financial principles into accessible formats — suitable for community finance education programs.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header reveal">
+    <div class="section-tag">Academic Background</div>
+    <h2 class="section-title">Education &amp; <em>Certifications</em></h2>
+  </div>
+  <div class="edu-grid">
+    <div>
+      <div class="edu-card reveal">
+        <div class="edu-period">September 2020 — November 2024</div>
+        <div class="edu-degree">Bachelor of Commerce (Finance Option)</div>
+        <div class="edu-institution">KCA University · Nairobi, Kenya</div>
+        <div class="edu-courses">
+          <span class="course-tag">Financial Accounting</span>
+          <span class="course-tag">Corporate Finance</span>
+          <span class="course-tag">Investment Analysis</span>
+          <span class="course-tag">Risk Management</span>
+          <span class="course-tag">Financial Markets</span>
+          <span class="course-tag">Managerial Economics</span>
+        </div>
+      </div>
+      <div class="edu-card reveal" style="margin-top:2.5rem;">
+        <div class="edu-period">2016 — 2019</div>
+        <div class="edu-degree">Kenya Certificate of Secondary Education (KCSE)</div>
+        <div class="edu-institution">St. Mary's Boys High School · Kibabii</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="cert-card">
+        <div class="cert-status">🟡 In Progress</div>
+        <div class="cert-title">Certified Investment &amp; Financial Analyst (CIFA)</div>
+        <div class="cert-body">KASNEB · Kenya<br><br>The CIFA qualification is Kenya's premier professional credential for investment and financial analysis professionals. Ranil's pursuit of this certification signals a serious commitment to investment-grade financial competence and professional excellence — positioning him for roles in asset management, investment banking, and corporate finance across East Africa.</div>
+      </div>
+      <div style="margin-top:2rem; padding:1.5rem; background:var(--mist); border-left:3px solid var(--sage);">
+        <div style="font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--warm-grey); margin-bottom:0.8rem;">Why CIFA Matters</div>
+        <p style="font-size:0.85rem; line-height:1.7; color:#3A3530;">CIFA is recognized by regulators and employers across East Africa as the standard for investment professionals — covering securities analysis, portfolio management, risk, and financial planning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Let's Build Something<br><em>Meaningful Together</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal" style="width:100%;">
+      <p class="contact-message">
+        Whether you're looking for a sharp finance analyst, a detail-oriented accounting associate, or a motivated professional ready to contribute from day one — I'd love to connect and explore how I can add value to your team.
+      </p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-item-content">
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:mulatiranil@gmail.com">mulatiranil@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-item-content">
+            <div class="contact-label">Phone / WhatsApp</div>
+            <div class="contact-value"><a href="tel:+254741697047">+254 741 697 047</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌍</div>
+          <div class="contact-item-content">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Nairobi, Kenya · Open to East Africa and beyond</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="#contact" target="_blank" class="social-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1。729v20。54２C０ ２３。２２７．７９２ ２４ １。７７１ ２４h２０。４５１C２３。２ ２４ ２４ ２３。２２７ ２４ ２２。２７１V１。７２９C２４ .774 ２３。２ ０ ２２。２２２ ０h．００３z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://wa.me/254741697047" target="_blank" class="social-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Ranil Simiyu Mulati · Finance Professional</span>
+</footer>
+
+<script>
+  // Nav toggle
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Close nav on link click (mobile)
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate skill bars
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          const w = bar.dataset.width;
+          bar.style.transform = `scaleX(${w})`;
+          bar.classList.add('animate');
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Stagger children inside revealed containers
+  document.querySelectorAll('.projects-grid .project-card, .exp-item').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+  });
+</script>
+</body>
+</html>
